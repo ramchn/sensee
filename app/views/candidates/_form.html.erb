@@ -1,0 +1,27 @@
+<%= form_with model: candidate do |form| %>
+  <table>
+  <tr>
+    <td><%= form.label :name %>:</td> 
+    <td><%= form.text_field :name %></td>
+    <% candidate.errors.full_messages_for(:name).each do |message| %>
+      <div><%= message %></div>
+    <% end %>
+  </tr>
+  <tr><td colspan=2>&nbsp;</td></tr>
+  <tr>
+    <td><%= form.label :skillset %>:</td> 
+    <td><%= form.text_area :skillset %></td>
+    <% candidate.errors.full_messages_for(:skillset).each do |message| %>
+      <div><%= message %></div>
+    <% end %>
+  </tr>
+  <tr><td colspan=2>&nbsp;</td></tr>
+  <tr>
+    <td><%= form.label :age %>:</td>
+    <td><%= form.text_field :age %>
+  </tr>
+  <tr><td colspan=2>&nbsp;</td></tr>
+  <tr>
+    <td colspan=2><%= form.submit %></td>    
+  </tr>
+<% end %>

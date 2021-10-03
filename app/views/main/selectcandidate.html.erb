@@ -1,0 +1,13 @@
+<h4>Log in as</h4>
+
+<ul>
+  <% @candidates.each do |candidate| %>
+      <li>
+        <%= link_to candidate.name, candidatehome_path(candidate.id), method: :get %>
+      </li>
+  <% end %>
+</ul>
+<% if @candidates.length() == 0 %>
+    <p> None </p>
+<% end %>
+<%= link_to "back", "/home" %>

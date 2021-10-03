@@ -1,0 +1,31 @@
+<h4>Recruiter > Jobs</h4>
+<ul>
+  <% if @jobs.length() > 0 %>
+    <table border=1>
+    <tr>
+    <th>Job Id</th>
+    <th>Title</th>
+    <th>Description</th>
+    <th>Location</th>
+    <th>Applied Candidates</th>
+    </tr>
+  <% end %>
+  <% @jobs.each do |job| %>
+      <% job_applications = get_job_applications_by_job(job) %>
+      <tr>
+        <td><%= link_to job.id, job %></td>
+        <td><%= job.title %></td>
+        <td><%= job.description %></td>
+        <td><%= job.location %></td>
+        <td><% if job_applications.length() > 0 %><% job_applications.each_with_index do |job_application, index| %> <%= job_application.candidate.name %><% if index != (job_applications.length() - 1) %>,<% end %><% end %><% else %> None Applied<% end %></td>
+      </tr>
+  <% end %>
+  <% if @jobs.length() > 0 %>
+    </table>
+  <% else %>
+    No Jobs
+  <% end %>
+</ul>
+
+<%= link_to "Add Job", new_job_path %> | <%= link_to "Home", "recruiterhome" %> 
+

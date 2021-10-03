@@ -1,0 +1,16 @@
+<h4>Welcome <%= @candidate.name %></h4>
+
+<p>Applying/withdrawing a Job</p>
+
+<ul>
+  <% @jobs.each do |job| %>
+      <% job_application = get_job_application(@candidate, job) %>
+      <li>
+        <%= job.title %> (<%= job.location %>) - <% if job_application %><%= link_to 'Withdraw', exclusivewithdraw_path(:candidate => @candidate, :job => job), method: :delete %><% else %><%= link_to 'Apply', exclusiveapply_path(:candidate => @candidate, :job => job), method: :post %><% end %>
+      </li>
+  <% end %>  
+</ul>
+<% if @jobs.length() == 0 %>
+    <p> No Jobs </p>
+<% end %>
+<%= link_to "Log out", "/home" %>

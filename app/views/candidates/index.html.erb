@@ -1,0 +1,28 @@
+<h4>Recruiter > Candidates</h4>
+<ul>
+<% if @candidates.length() > 0 %>
+  <table border=1>
+    <tr>
+      <th>Candidate Id</th>
+      <th>Name</th>
+      <th>Skillset</th>
+      <th>Age</th>
+    </tr>
+<% end %>
+  <% @candidates.each do |candidate| %>
+      <tr>
+        <td><%= link_to candidate.id, candidate %></td>
+        <td><%= candidate.name %></td>
+        <td><%= candidate.skillset %></td>
+        <td><%= candidate.age %></td>
+      </tr>
+  <% end %>
+</ul>
+<% if @candidates.length() > 0 %>
+  </table>
+<% else %>
+  <p>No Candidates</p>
+<% end %>
+</ul>
+<%= link_to "Home", "recruiterhome" %>
+
